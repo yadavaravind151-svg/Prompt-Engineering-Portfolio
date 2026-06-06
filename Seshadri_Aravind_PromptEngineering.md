@@ -220,3 +220,127 @@ Context setting was equally important. By providing details such as the reason f
 ### 2.2 Analysis & Recommendations
 
 Low temperature settings are ideal when factual accuracy, structural consistency, and precision are important. Two specific use cases include generating software code and creating corporate financial reports. High temperature settings are most useful when creativity and originality are required, such as brainstorming marketing campaigns or writing fictional stories. For this task, the medium temperature setting (0.7) performed best because it balanced technical accuracy with readability. The low temperature output was highly precise but somewhat rigid, while the high temperature output was imaginative but less technically grounded. Therefore, the medium setting provided the most effective explanation for a general audience.
+
+
+
+
+## Part 3: Strategic Prompting Techniques
+
+### 3.1 Chain-of-Thought Prompting
+
+**Selected Problem:** Option B – Multi-Step Reasoning
+
+**Problem:** A company has 150 employees. 60% work in engineering, 25% in sales, and the rest in operations. If the company plans to hire 20% more engineers and 10% more sales people, how many total employees will there be after hiring?
+
+---
+
+#### Without Chain-of-Thought
+
+**Prompt:**
+
+> A company has 150 employees. 60% work in engineering, 25% in sales, and the rest in operations. If the company plans to hire 20% more engineers and 10% more sales people, how many total employees will there be after hiring? Give only the final answer.
+
+**LLM Output:**
+
+> 172 employees.
+
+---
+
+#### With Chain-of-Thought
+
+**Prompt:**
+
+> A company has 150 employees. 60% work in engineering, 25% in sales, and the rest in operations. If the company plans to hire 20% more engineers and 10% more sales people, how many total employees will there be after hiring? Let's solve this step by step.
+
+**LLM Output:**
+
+> Total employees = 150
+>
+> Engineering employees = 60% of 150 = 90
+>
+> Sales employees = 25% of 150 = 37.5
+>
+> Additional engineering hires = 20% of 90 = 18
+>
+> Additional sales hires = 10% of 37.5 = 3.75
+>
+> Total new hires = 18 + 3.75 = 21.75
+>
+> Total employees after hiring = 150 + 21.75 = 171.75
+>
+> Rounded to the nearest whole employee, the company will have **172 employees**.
+
+---
+
+#### Comparison
+
+The output without Chain-of-Thought provided only the final answer, making it difficult to understand how the result was calculated. The Chain-of-Thought approach broke the problem into smaller steps and showed the reasoning process used to reach the answer. This improves transparency and makes it easier to verify calculations. One limitation is that the model treated employees as fractional values, which is mathematically correct but unrealistic in a real-world business setting.
+
+---
+
+### 3.2 Few-Shot Prompting
+
+#### Step 1: Zero-Shot Attempt
+
+**Prompt:**
+
+> Classify the sentiment of each review as Positive, Negative, or Neutral.
+
+**Results:**
+
+| Review                                                          | Classification |
+| --------------------------------------------------------------- | -------------- |
+| The product arrived damaged and customer service was unhelpful. | Negative       |
+| Works as expected, nothing special but does the job.            | Neutral        |
+| Absolutely love this! Best purchase I've made all year!         | Positive       |
+| The quality is okay but slightly overpriced for what you get.   | Neutral        |
+| Terrible experience, would not recommend to anyone.             | Negative       |
+
+---
+
+#### Step 2: Few-Shot Attempt
+
+**Prompt:**
+
+> Review: "This product exceeded my expectations!"
+> Sentiment: Positive
+>
+> Review: "Completely broke after one week of use."
+> Sentiment: Negative
+>
+> Review: "It's fine, does what it says on the box."
+> Sentiment: Neutral
+>
+> Review: "Amazing quality and excellent value."
+> Sentiment: Positive
+>
+> Review: "Customer support never responded."
+> Sentiment: Negative
+>
+> Now classify the sentiment of the following reviews as Positive, Negative, or Neutral.
+
+**Results:**
+
+| Review                                                          | Classification |
+| --------------------------------------------------------------- | -------------- |
+| The product arrived damaged and customer service was unhelpful. | Negative       |
+| Works as expected, nothing special but does the job.            | Neutral        |
+| Absolutely love this! Best purchase I've made all year!         | Positive       |
+| The quality is okay but slightly overpriced for what you get.   | Neutral        |
+| Terrible experience, would not recommend to anyone.             | Negative       |
+
+---
+
+#### Step 3: Analysis
+
+| Review # | Zero-Shot Result | Few-Shot Result | Correct Label | Improved? |
+| -------- | ---------------- | --------------- | ------------- | --------- |
+| 1        | Negative         | Negative        | Negative      | No        |
+| 2        | Neutral          | Neutral         | Neutral       | No        |
+| 3        | Positive         | Positive        | Positive      | No        |
+| 4        | Neutral          | Neutral         | Neutral       | No        |
+| 5        | Negative         | Negative        | Negative      | No        |
+
+Few-shot prompting is most useful when a task requires a specific output format, classification style, or domain-specific interpretation. By providing examples, the model learns the expected pattern and produces more consistent results. Although both approaches produced identical results in this experiment, few-shot prompting generally improves reliability when dealing with more complex or ambiguous inputs.
+
+
