@@ -1,3 +1,11 @@
+# Prompt Engineering Portfolio
+
+Name: Seshadri Aravind
+
+Date: June 2026
+
+LLM Used: Gemini 2.5 Flash
+
 ## Part 1: Prompt Design & Iteration
 
 ### 1.1 Scenario A: Technical Explanation
