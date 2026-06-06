@@ -161,3 +161,62 @@
 Role assignment significantly improved the quality of responses throughout the prompt refinement process. In Scenario A, assigning the role of an elementary school teacher encouraged the model to use simpler vocabulary, analogies, and an engaging tone appropriate for children. In Scenario B, assigning the role of a corporate communications professional resulted in a more polished and professional email structure.
 
 Context setting was equally important. By providing details such as the reason for declining the job offer and the desire to maintain future connections, the generated email became more realistic and personalized. Similarly, specifying the target audience and brand positioning in Scenario C helped create a tagline that aligned closely with marketing objectives. These examples demonstrate how role and context reduce ambiguity and improve output quality.
+
+
+
+
+## Part 2: Temperature & Parameter Control
+
+### 2.1 Temperature Experimentation
+
+**Task Chosen:** Explaining a technical concept (Neural Networks)
+
+**Base Prompt:** Explain what a neural network is in simple terms.
+
+**Note:** Since Gemini Free Tier does not provide direct temperature controls, temperature behavior was simulated by modifying prompt instructions according to the assignment guidelines.
+
+---
+
+#### Low Temperature (0.2)
+
+**Prompt Used:** Explain what a neural network is in simple terms. Be precise and consistent.
+
+**Output:**
+
+> A neural network is a method in artificial intelligence that teaches computers to process data in a way inspired by the human brain. It uses interconnected nodes or neurons in a layered structure, resembling a biological network. These networks can learn from input data to recognize patterns, classify information, and solve complex problems consistently.
+
+---
+
+#### Medium Temperature (0.7)
+
+**Prompt Used:** Explain what a neural network is in simple terms.
+
+**Output:**
+
+> A neural network is a type of machine learning software that mimics how the human brain works. It is built out of layers of interconnected points called nodes. When you feed data into the network, it passes information through these layers to spot deep patterns. This structure allows the AI to do smart things like recognize your face in photos or translate languages automatically.
+
+---
+
+#### High Temperature (1.2)
+
+**Prompt Used:** Explain what a neural network is in simple terms. Be creative and explore diverse ideas.
+
+**Output:**
+
+> Think of a neural network as an entire stadium filled with millions of fans doing "the wave" in perfect harmony. Each fan passes a small clue to the next person. By the time the message reaches the other side of the stadium, a massive mathematical picture comes to life. It is nature's complex web replicated in computer code, dreaming up patterns from chaotic numbers.
+
+---
+
+### Comparison Table
+
+| Temperature      | Style               | Creativity | Accuracy  | Characteristics                                                                |
+| :--------------- | :------------------ | :--------- | :-------- | :----------------------------------------------------------------------------- |
+| **0.2 (Low)**    | Formal and factual  | Low        | Very High | Highly predictable, literal, direct, and structured.                           |
+| **0.7 (Medium)** | Balanced and clear  | Moderate   | High      | Highly readable, using accessible real-world examples.                         |
+| **1.2 (High)**   | Abstract and poetic | High       | Moderate  | Relies heavily on loose analogies and risks drifting from technical realities. |
+
+---
+
+### 2.2 Analysis & Recommendations
+
+Low temperature settings are ideal when factual accuracy, structural consistency, and precision are important. Two specific use cases include generating software code and creating corporate financial reports. High temperature settings are most useful when creativity and originality are required, such as brainstorming marketing campaigns or writing fictional stories. For this task, the medium temperature setting (0.7) performed best because it balanced technical accuracy with readability. The low temperature output was highly precise but somewhat rigid, while the high temperature output was imaginative but less technically grounded. Therefore, the medium setting provided the most effective explanation for a general audience.
